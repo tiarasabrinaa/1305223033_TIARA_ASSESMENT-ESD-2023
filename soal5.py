@@ -1,24 +1,14 @@
-def hitung_kombinasi_username(nama_lengkap, panjang_username):
-    nama_lengkap = nama_lengkap.replace(" ", "")
-    jumlah_huruf = len(nama_lengkap)
+def username(nama):
+    jumlah_huruf_unik = len(set(nama))
 
-    def faktorial(n):
-        if n == 0:
-            return 1
-        else:
-            return n * faktorial(n - 1)
-
-    def kombinasi(n, k):
-        return faktorial(n) // (faktorial(k) * faktorial(n - k))
+    #Menghitung jumlah kombinasi untuk panjang username 1 hingga 6 dengan asumsi semua huruf bisa
+    #digunakan lebih dari 1 kali
 
     total_kombinasi = 0
-    for i in range(1, panjang_username + 1):
-        total_kombinasi += kombinasi(jumlah_huruf, i)
+    for i in range(1, 7):
+        total_kombinasi += jumlah_huruf_unik ** i
 
     return total_kombinasi
 
-nama = "Naip Lovyu"
-panjang_username = 6
-
-jumlah_kombinasi = hitung_kombinasi_username(nama, panjang_username)
-print("Jumlah total kombinasi username yang mungkin:", jumlah_kombinasi)
+nama = "NaipLovyu"
+print("Jumlah kombinasi username yang mungkin (dengan pengulangan huruf):", username(nama))
